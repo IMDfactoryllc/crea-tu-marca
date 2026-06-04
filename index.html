@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMD Factory — Cosmetic Manufacturing Partners</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#C9A96E;--gold-light:#E8D5B0;--gold-dark:#8B6A35;--cream:#FAF7F2;--dark:#1A1814;--mid:#5C5548;--ll:rgba(201,169,110,0.22);}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);}
+
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,24,20,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,169,110,0.15);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#FAF7F2;letter-spacing:0.02em;}
+.nav-logo span{color:var(--gold);font-style:italic;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;}
+.nav-link{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,247,242,0.6);text-decoration:none;transition:color 0.2s;cursor:pointer;}
+.nav-link:hover{color:var(--gold-light);}
+.nav-cta{background:transparent;border:1.5px solid var(--gold);color:var(--gold-light);font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:500;padding:7px 18px;border-radius:2px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.nav-cta:hover{background:var(--gold);color:var(--dark);}
+@media(max-width:650px){.nav-links{display:none;}.nav-logo{font-size:1.1rem;}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 80px,rgba(201,169,110,0.03) 80px,rgba(201,169,110,0.03) 81px);}
+.hero-eyebrow{font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;position:relative;}
+.hero-logo{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,6rem);font-weight:300;color:#FAF7F2;line-height:1;letter-spacing:-0.02em;margin-bottom:0.5rem;position:relative;}
+.hero-logo span{color:var(--gold);font-style:italic;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-style:italic;color:rgba(250,247,242,0.5);margin-bottom:2.5rem;position:relative;}
+.hero-line{width:60px;height:1px;background:var(--gold);margin:0 auto 2.5rem;opacity:0.6;position:relative;}
+.hero-badges{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:3rem;position:relative;}
+.badge{border:1px solid rgba(201,169,110,0.35);color:var(--gold-light);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:2px;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-primary{background:var(--gold);color:var(--dark);border:none;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;padding:13px 30px;border-radius:2px;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--gold-dark);color:#fff;}
+.btn-outline{background:transparent;color:var(--gold-light);border:1.5px solid rgba(201,169,110,0.5);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;padding:12px 28px;border-radius:2px;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.4;}
+.hero-scroll span{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s infinite;}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+/* ── SECTIONS ── */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto;}
+.section-eyebrow{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.75rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:var(--dark);margin-bottom:0.5rem;line-height:1.15;}
+.section-sub{font-size:13px;color:var(--mid);margin-bottom:3rem;line-height:1.7;max-width:560px;}
+.divider{border:none;border-top:1px solid var(--ll);margin:0;}
+
+/* ── STATS ── */
+.stats-wrap{background:var(--dark);padding:3rem 2rem;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,169,110,0.15);max-width:900px;margin:0 auto;}
+@media(max-width:550px){.stats{grid-template-columns:repeat(2,1fr);}}
+.stat{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:#FAF7F2;line-height:1;margin-bottom:6px;}
+.stat-num span{color:var(--gold);}
+.stat-label{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,242,0.45);}
+
+/* ── MODALIDADES ── */
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:0;}
+@media(max-width:640px){.tiers{grid-template-columns:1fr;}}
+.tier-card{border:1px solid var(--ll);border-radius:4px;overflow:hidden;background:#fff;}
+.tier-card.featured{border-color:var(--gold);}
+.tier-header{padding:1.75rem 1.5rem 1.1rem;border-bottom:1px solid var(--ll);}
+.tier-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:0.6rem;}
+.tier-card.featured .tier-tag{color:var(--gold-dark);}
+.tier-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--dark);margin-bottom:0.3rem;}
+.tier-desc{font-size:12.5px;color:var(--mid);line-height:1.65;}
+.tier-body{padding:1.25rem 1.5rem;}
+.tier-feature{display:flex;align-items:flex-start;gap:10px;margin-bottom:0.65rem;font-size:12.5px;color:var(--dark);}
+.tier-feature::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.tier-footer{padding:1rem 1.5rem;background:var(--cream);border-top:1px solid var(--ll);font-size:11.5px;color:var(--mid);font-style:italic;}
+
+/* ── WHY US ── */
+.why-wrap{background:var(--dark);padding:5rem 2rem;}
+.why-inner{max-width:1100px;margin:0 auto;}
+.why-inner .section-title{color:#FAF7F2;}
+.why-inner .section-sub{color:rgba(250,247,242,0.5);}
+.why-inner .section-eyebrow{color:var(--gold);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;}
+.why-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.15);border-radius:4px;padding:1.75rem 1.5rem;}
+.why-icon{font-size:1.75rem;margin-bottom:1rem;display:block;}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:#FAF7F2;margin-bottom:0.5rem;}
+.why-text{font-size:12px;color:rgba(250,247,242,0.55);line-height:1.7;}
+
+/* ── PRODUCTS ── */
+.filter-row{display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap;}
+.filter-btn{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;font-weight:500;color:var(--mid);background:#fff;border:1px solid var(--ll);border-radius:2px;padding:6px 14px;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif;}
+.filter-btn:hover,.filter-btn.active{background:var(--dark);color:var(--gold-light);border-color:var(--dark);}
+.cat-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--mid);font-weight:500;padding-bottom:0.6rem;border-bottom:1px solid var(--ll);margin-bottom:1rem;margin-top:1.75rem;}
+.cat-label:first-of-type{margin-top:0;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
+.product-card{background:#fff;border:1px solid var(--ll);border-radius:4px;padding:1.25rem;transition:border-color 0.2s,transform 0.2s;}
+.product-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.product-icon{font-size:1.5rem;margin-bottom:0.75rem;display:block;}
+.product-cat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.25rem;font-weight:500;}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--dark);margin-bottom:0.35rem;}
+.product-desc{font-size:11px;color:var(--mid);line-height:1.55;}
+.product-moq{margin-top:0.75rem;padding-top:0.6rem;border-top:1px solid var(--ll);font-size:10px;color:var(--mid);}
+.product-moq strong{color:var(--gold-dark);font-weight:500;}
+
+/* ── PROCESS ── */
+.process-wrap{background:#fff;padding:5rem 2rem;}
+.process-inner{max-width:1100px;margin:0 auto;}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;}
+.step-card{background:var(--cream);border:1px solid var(--ll);border-radius:4px;padding:1.5rem 1.25rem;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);opacity:0.3;line-height:1;margin-bottom:0.5rem;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--dark);margin-bottom:0.35rem;}
+.step-text{font-size:11.5px;color:var(--mid);line-height:1.6;}
+.time-box{background:var(--dark);border-radius:4px;padding:1.5rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.time-item strong{display:block;color:var(--gold-light);font-size:12.5px;font-weight:500;margin-bottom:3px;}
+.time-item span{color:rgba(250,247,242,0.55);font-size:12px;}
+
+/* ── EMPAQUE ── */
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;}
+.pack-card{background:#fff;border:1px solid var(--ll);border-radius:4px;padding:1.5rem;}
+.pack-type{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;font-weight:500;}
+.pack-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--dark);margin-bottom:0.5rem;}
+.pack-desc{font-size:11.5px;color:var(--mid);line-height:1.55;}
+.pack-pills{margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:4px;}
+.pack-pill{font-size:9.5px;padding:3px 8px;background:var(--cream);border:1px solid var(--ll);border-radius:2px;color:var(--mid);}
+.alert-banner{display:flex;align-items:flex-start;gap:10px;background:#FFF8EC;border:1px solid rgba(201,169,110,0.4);border-radius:4px;padding:1rem 1.25rem;margin-bottom:1.75rem;}
+.alert-text{font-size:12px;color:var(--gold-dark);line-height:1.65;}
+.alert-text strong{font-weight:500;color:var(--dark);}
+
+/* ── FORM SECTION ── */
+.form-section{background:var(--dark);padding:5rem 2rem;}
+.form-inner{max-width:700px;margin:0 auto;}
+.form-inner .section-title{color:#FAF7F2;}
+.form-inner .section-sub{color:rgba(250,247,242,0.5);}
+.form-inner .section-eyebrow{color:var(--gold);}
+
+.fstep-indicator{display:flex;align-items:center;gap:0;margin-bottom:2.5rem;}
+.fstep-dot{width:30px;height:30px;border-radius:50%;border:1px solid rgba(201,169,110,0.3);background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:rgba(250,247,242,0.4);transition:all 0.25s;flex-shrink:0;}
+.fstep-dot.active{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+.fstep-dot.done{background:rgba(201,169,110,0.2);color:var(--gold);border-color:rgba(201,169,110,0.4);}
+.fstep-line{flex:1;height:1px;background:rgba(201,169,110,0.15);}
+.fstep-line.done{background:rgba(201,169,110,0.4);}
+.fstep{display:none;}.fstep.active{display:block;}
+.fstep-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#FAF7F2;margin-bottom:0.25rem;}
+.fstep-sub{font-size:12px;color:rgba(250,247,242,0.45);margin-bottom:1.5rem;line-height:1.6;}
+
+.field{margin-bottom:1.1rem;}
+.field label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;color:rgba(250,247,242,0.5);margin-bottom:5px;}
+.field label .req{color:var(--gold);}
+.field input,.field textarea,.field select{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.2);border-radius:3px;padding:10px 12px;font-size:13px;font-family:'DM Sans',sans-serif;color:#FAF7F2;outline:none;transition:border-color 0.15s;}
+.field input::placeholder,.field textarea::placeholder{color:rgba(250,247,242,0.25);}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold);background:rgba(255,255,255,0.09);}
+.field input.error,.field textarea.error,.field select.error{border-color:#E24B4A;}
+.field textarea{resize:vertical;min-height:85px;}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C9A96E'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.field select option{background:var(--dark);color:#FAF7F2;}
+
+.radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+.radio-card{border:1px solid rgba(201,169,110,0.2);border-radius:3px;padding:1rem;cursor:pointer;background:rgba(255,255,255,0.04);transition:all 0.15s;position:relative;}
+.radio-card:hover{border-color:rgba(201,169,110,0.5);}
+.radio-card.selected{border-color:var(--gold);background:rgba(201,169,110,0.08);}
+.radio-card input{position:absolute;opacity:0;width:0;height:0;}
+.radio-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:#FAF7F2;margin-bottom:3px;}
+.radio-desc{font-size:10.5px;color:rgba(250,247,242,0.45);line-height:1.5;}
+.radio-card.selected .radio-title{color:var(--gold-light);}
+.radio-dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(201,169,110,0.3);position:absolute;top:10px;right:10px;}
+.radio-card.selected .radio-dot{background:var(--gold);border-color:var(--gold);}
+
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+@media(max-width:480px){.check-grid{grid-template-columns:1fr;}}
+.check-item{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.15);border-radius:3px;padding:8px 10px;cursor:pointer;transition:border-color 0.15s;}
+.check-item:hover{border-color:rgba(201,169,110,0.4);}
+.check-item.checked{border-color:var(--gold);background:rgba(201,169,110,0.08);}
+.check-item input{width:14px;height:14px;accent-color:var(--gold);cursor:pointer;flex-shrink:0;}
+.check-item span{font-size:11.5px;color:rgba(250,247,242,0.8);}
+
+.private-block{background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.2);border-radius:3px;padding:1rem 1.1rem;margin-top:0.75rem;display:none;}
+.private-block.show{display:block;}
+.private-note{font-size:11px;color:rgba(250,247,242,0.55);line-height:1.65;margin-bottom:0.75rem;padding:0.6rem 0.8rem;background:rgba(201,169,110,0.08);border-radius:2px;border-left:2px solid var(--gold);}
+
+.budget-pills{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.budget-pill{font-size:11px;padding:7px 15px;border:1px solid rgba(201,169,110,0.2);border-radius:20px;cursor:pointer;background:rgba(255,255,255,0.04);color:rgba(250,247,242,0.6);transition:all 0.15s;font-family:'DM Sans',sans-serif;}
+.budget-pill:hover{border-color:var(--gold);}
+.budget-pill.selected{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:500;}
+
+.fbtn-row{display:flex;gap:0.75rem;margin-top:1.75rem;}
+.fbtn-next{background:var(--gold);color:var(--dark);border:none;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;padding:12px 24px;border-radius:2px;cursor:pointer;transition:background 0.15s;flex:1;}
+.fbtn-next:hover{background:var(--gold-dark);color:#fff;}
+.fbtn-back{background:transparent;color:rgba(250,247,242,0.5);border:1px solid rgba(201,169,110,0.2);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;padding:12px 20px;border-radius:2px;cursor:pointer;transition:all 0.15s;}
+.fbtn-back:hover{border-color:var(--gold);color:var(--gold-light);}
+.fbtn-submit{background:var(--gold);color:var(--dark);border:none;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;padding:12px 24px;border-radius:2px;cursor:pointer;flex:1;transition:background 0.15s;}
+.fbtn-submit:hover{background:var(--gold-dark);color:#fff;}
+
+.err-msg{font-size:11px;color:#ff6b6b;margin-top:4px;}
+.summary-box{background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:4px;padding:1.25rem;margin-bottom:1.25rem;font-size:12.5px;line-height:2;color:rgba(250,247,242,0.7);}
+.summary-box strong{color:var(--gold-light);}
+.form-note{background:rgba(201,169,110,0.07);border-radius:3px;padding:0.85rem 1rem;font-size:11.5px;color:rgba(250,247,242,0.45);line-height:1.7;border-left:2px solid rgba(201,169,110,0.4);margin-bottom:1rem;}
+
+.success-box{text-align:center;padding:3rem 1rem;}
+.success-icon{font-size:3rem;margin-bottom:1rem;}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#FAF7F2;margin-bottom:0.5rem;}
+.success-text{font-size:13px;color:rgba(250,247,242,0.55);line-height:1.7;margin-bottom:1.5rem;}
+.success-contact{background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:4px;padding:1rem 1.5rem;display:inline-block;text-align:left;}
+.success-contact p{font-size:11.5px;color:rgba(250,247,242,0.45);margin-bottom:6px;}
+.success-contact strong{color:var(--gold-light);font-size:13px;}
+
+/* ── FOOTER ── */
+.footer{background:var(--dark);border-top:1px solid rgba(201,169,110,0.1);padding:2rem;text-align:center;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:rgba(250,247,242,0.6);margin-bottom:0.5rem;}
+.footer-logo span{color:var(--gold);font-style:italic;}
+.footer-info{font-size:11px;color:rgba(250,247,242,0.3);letter-spacing:0.5px;line-height:1.8;}
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float{position:fixed;bottom:1.75rem;right:1.75rem;z-index:200;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.55);}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">IMD <span>Factory</span></div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="scrollToSection('modalidades')">Servicios</a>
+    <a class="nav-link" onclick="scrollToSection('productos')">Productos</a>
+    <a class="nav-link" onclick="scrollToSection('proceso')">Proceso</a>
+    <a class="nav-link" onclick="scrollToSection('empaque')">Empaque</a>
+    <a class="nav-cta" onclick="scrollToSection('formulario')">✦ Iniciar mi marca</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Jayuya, Puerto Rico · Est. Manufacturing Excellence</div>
+  <div class="hero-logo">IMD <span>Factory</span></div>
+  <div class="hero-tagline">Cosmetic Manufacturing Partners</div>
+  <div class="hero-line"></div>
+  <div class="hero-badges">
+    <span class="badge">Private Label</span>
+    <span class="badge">White Label</span>
+    <span class="badge">Skin Care</span>
+    <span class="badge">Hair Care</span>
+    <span class="badge">Lip Care</span>
+    <span class="badge">Hecho en PR</span>
+  </div>
+  <div class="hero-btns">
+    <a class="btn-primary" onclick="scrollToSection('formulario')">Iniciar mi marca →</a>
+    <a class="btn-outline" onclick="scrollToSection('productos')">Ver productos</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-wrap">
+  <div class="stats">
+    <div class="stat"><div class="stat-num">100<span>+</span></div><div class="stat-label">Fórmulas activas</div></div>
+    <div class="stat"><div class="stat-num">5<span>+</span></div><div class="stat-label">Años de experiencia</div></div>
+    <div class="stat"><div class="stat-num">29<span>+</span></div><div class="stat-label">Tipos de productos</div></div>
+    <div class="stat"><div class="stat-num" style="font-size:1.8rem;padding-top:4px;">PR</div><div class="stat-label">Manufactura local</div></div>
+  </div>
+</div>
+
+<!-- MODALIDADES -->
+<div id="modalidades">
+<div class="section">
+  <div class="section-eyebrow">Modalidades de servicio</div>
+  <div class="section-title">Elige cómo quieres trabajar</div>
+  <div class="section-sub">Dos opciones diseñadas para distintos momentos de tu marca — desde el lanzamiento hasta el escalamiento.</div>
+  <div class="tiers">
+    <div class="tier-card">
+      <div class="tier-header">
+        <div class="tier-tag">Entrada al mercado rápida</div>
+        <div class="tier-name">White Label</div>
+        <div class="tier-desc">Fórmulas estándar probadas y listas para mercado. Tú pones tu marca y lanzas. Ideal para emprendedores que quieren arrancar rápido con menos inversión.</div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-feature">Fórmulas prediseñadas y probadas</div>
+        <div class="tier-feature">MOQ desde 50 unidades</div>
+        <div class="tier-feature">Tiempo de entrega desde 3 semanas</div>
+        <div class="tier-feature">Perfecto para probar tu mercado</div>
+        <div class="tier-feature">Menor inversión inicial</div>
+      </div>
+      <div class="tier-footer">Lanzamiento express · Riesgo mínimo</div>
+    </div>
+    <div class="tier-card featured">
+      <div class="tier-header">
+        <div class="tier-tag">★ Mayor valor de marca</div>
+        <div class="tier-name">Private Label</div>
+        <div class="tier-desc">Tú defines el beneficio, el aroma y la textura. Nosotros desarrollamos la fórmula exclusivamente para tu marca bajo nuestro expertise y propiedad intelectual.</div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-feature">Fórmula desarrollada a tu especificación</div>
+        <div class="tier-feature">MOQ desde 250 unidades</div>
+        <div class="tier-feature">Selección de ingredientes activos</div>
+        <div class="tier-feature">Fragancias y texturas a medida</div>
+        <div class="tier-feature">Escalabilidad de producción asegurada</div>
+        <div class="tier-feature">NDA y confidencialidad total</div>
+      </div>
+      <div class="tier-footer">Mayor diferenciación · Valor de recompra superior</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- WHY US -->
+<div class="why-wrap">
+  <div class="why-inner">
+    <div class="section-eyebrow">Por qué elegirnos</div>
+    <div class="section-title" style="color:#FAF7F2;">Manufactura con experiencia real de marca</div>
+    <div class="section-sub">No solo fabricamos — nosotros mismos desarrollamos y vendemos nuestras propias marcas cosméticas. Eso nos da una perspectiva única que pocos manufactureros tienen.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🏭</span>
+        <div class="why-title">Manufactura local en PR</div>
+        <div class="why-text">Producción 100% en Puerto Rico. Control de calidad directo, tiempos de entrega más cortos y apoyo a la economía local.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⚗️</span>
+        <div class="why-title">Más de 100 fórmulas activas</div>
+        <div class="why-text">Biblioteca de fórmulas probadas en el mercado real. Para piel, cabello, labios e higiene íntima — tenemos la base que necesitas.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📦</span>
+        <div class="why-title">MOQ accesible</div>
+        <div class="why-text">Desde 50 unidades en White Label. No necesitas comprometer grandes inventarios para lanzar tu marca al mercado.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🔒</span>
+        <div class="why-title">Confidencialidad total</div>
+        <div class="why-text">NDA disponible desde el primer día. Tu proyecto, tus ideas y tu marca están completamente protegidos durante todo el proceso.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">✅</span>
+        <div class="why-title">Cumplimiento FDA</div>
+        <div class="why-text">Todos nuestros productos cumplen con las regulaciones FDA para cosméticos. Te orientamos sobre etiquetado y requisitos legales.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🤝</span>
+        <div class="why-title">Acompañamiento real</div>
+        <div class="why-text">Primera consulta sin costo. Te guiamos desde la idea hasta el producto terminado con atención personalizada en cada paso.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTOS -->
+<div id="productos">
+<div class="section">
+  <div class="section-eyebrow">Catálogo de productos</div>
+  <div class="section-title">Lo que podemos fabricar para ti</div>
+  <div class="section-sub">Líneas completas disponibles para White Label y Private Label. MOQ desde 50 unidades.</div>
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterCat('all',this)">Todos</button>
+    <button class="filter-btn" onclick="filterCat('piel',this)">Piel</button>
+    <button class="filter-btn" onclick="filterCat('cuerpo',this)">Cuerpo</button>
+    <button class="filter-btn" onclick="filterCat('labios',this)">Labios</button>
+    <button class="filter-btn" onclick="filterCat('intimo',this)">Íntimo</button>
+    <button class="filter-btn" onclick="filterCat('cabello',this)">Cabello</button>
+  </div>
+  <div id="products-container"></div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- PROCESO -->
+<div class="process-wrap" id="proceso">
+  <div class="process-inner">
+    <div class="section-eyebrow">Cómo trabajamos</div>
+    <div class="section-title">De la idea al anaquel en 5 pasos</div>
+    <div class="section-sub" style="margin-bottom:2rem;">Un proceso claro y transparente donde tú tienes el control en cada etapa.</div>
+    <div class="process-steps">
+      <div class="step-card"><div class="step-num">01</div><div class="step-title">Consulta inicial</div><div class="step-text">Conversamos sobre tu visión, mercado objetivo, presupuesto y tipo de producto. Sin costo.</div></div>
+      <div class="step-card"><div class="step-num">02</div><div class="step-title">Briefing & propuesta</div><div class="step-text">Documentamos tus requerimientos y presentamos opciones con cotización detallada.</div></div>
+      <div class="step-card"><div class="step-num">03</div><div class="step-title">Muestras & aprobación</div><div class="step-text">Desarrollamos prototipos hasta que textura, aroma y rendimiento cumplan tus expectativas.</div></div>
+      <div class="step-card"><div class="step-num">04</div><div class="step-title">Empaque & etiquetado</div><div class="step-text">El cliente provee sus envases o recibe el producto a granel en pailas o galones.</div></div>
+      <div class="step-card"><div class="step-num">05</div><div class="step-title">Producción & entrega</div><div class="step-text">Fabricamos en PR bajo estrictos controles de calidad. Entrega en el tiempo acordado.</div></div>
+    </div>
+    <div class="time-box">
+      <div class="time-item"><strong>White Label</strong><span>3 – 5 semanas</span></div>
+      <div class="time-item"><strong>Private Label</strong><span>6 – 12 semanas</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPAQUE -->
+<div id="empaque">
+<div class="section">
+  <div class="section-eyebrow">Opciones de empaque</div>
+  <div class="section-title">Entrega flexible para cada cliente</div>
+  <div class="section-sub">Sin importar tu volumen o tipo de negocio, tenemos una opción que se adapta a ti.</div>
+  <div class="alert-banner">
+    <div class="alert-text"><strong>IMD Factory provee envase genérico estándar</strong> incluido en el precio. Si necesitas algo diferente, puedes traer tu propio envase o recibir el producto <strong>a granel en pailas o galones</strong>. El etiquetado y presentación final son responsabilidad del cliente.</div>
+  </div>
+  <div class="pack-grid">
+    <div class="pack-card"><div class="pack-type">Opción A — Incluido</div><div class="pack-name">Envase genérico estándar</div><div class="pack-desc">Botellas, tarros y dispensadores estándar. El cliente aplica su propia etiqueta.</div><div class="pack-pills"><span class="pack-pill">HDPE / PET</span><span class="pack-pill">Tarros</span><span class="pack-pill">Pump / flip-cap</span><span class="pack-pill">60–500 ml</span></div></div>
+    <div class="pack-card"><div class="pack-type">Opción B — Cliente provee</div><div class="pack-name">Tu propio envase</div><div class="pack-desc">Trae tus envases vacíos. IMD Factory realiza el llenado y sellado en nuestras instalaciones.</div><div class="pack-pills"><span class="pack-pill">Cualquier formato</span><span class="pack-pill">Vidrio / aluminio / PET</span></div></div>
+    <div class="pack-card"><div class="pack-type">Opción C — A granel</div><div class="pack-name">Pailas & galones</div><div class="pack-desc">Producto terminado a granel. Ideal para distribuidores o quienes manejan su propio envasado.</div><div class="pack-pills"><span class="pack-pill">Pailas 1 gal</span><span class="pack-pill">Pailas 5 gal</span><span class="pack-pill">Grandes volúmenes</span></div></div>
+    <div class="pack-card"><div class="pack-type">Etiquetado</div><div class="pack-name">Responsabilidad del cliente</div><div class="pack-desc">El cliente diseña, imprime y aplica sus etiquetas. Te orientamos sobre los requisitos FDA.</div><div class="pack-pills"><span class="pack-pill">Diseño: cliente</span><span class="pack-pill">Impresión: cliente</span><span class="pack-pill">FDA obligatorio</span></div></div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- FORMULARIO -->
+<div class="form-section" id="formulario">
+  <div class="form-inner">
+    <div class="section-eyebrow">Consulta gratuita</div>
+    <div class="section-title">Inicia tu <span style="color:var(--gold);font-style:italic;">marca</span> hoy</div>
+    <div class="section-sub">Llena el formulario y te contactamos en menos de 48 horas. Primera consulta sin costo.</div>
+
+    <div class="fstep-indicator" id="fsteps-bar">
+      <div class="fstep-dot active" id="fdot-1">1</div><div class="fstep-line" id="fline-1"></div>
+      <div class="fstep-dot" id="fdot-2">2</div><div class="fstep-line" id="fline-2"></div>
+      <div class="fstep-dot" id="fdot-3">3</div><div class="fstep-line" id="fline-3"></div>
+      <div class="fstep-dot" id="fdot-4">4</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="fstep active" id="fstep-1">
+      <div class="fstep-title">Datos personales</div>
+      <div class="fstep-sub">Cuéntanos quién eres para poder contactarte.</div>
+      <div class="field"><label>Nombre completo <span class="req">*</span></label><input type="text" id="ff-name" placeholder="Ej: María González"><div class="err-msg" id="fe-name"></div></div>
+      <div class="field"><label>Nombre de tu marca / empresa <span class="req">*</span></label><input type="text" id="ff-brand" placeholder="Ej: LuxeSkin Co."><div class="err-msg" id="fe-brand"></div></div>
+      <div class="field"><label>Email <span class="req">*</span></label><input type="email" id="ff-email" placeholder="tu@email.com"><div class="err-msg" id="fe-email"></div></div>
+      <div class="field"><label>Teléfono / WhatsApp <span class="req">*</span></label><input type="tel" id="ff-phone" placeholder="787-000-0000"><div class="err-msg" id="fe-phone"></div></div>
+      <div class="field">
+        <label>País <span class="req">*</span></label>
+        <select id="ff-country"><option value="">-- Selecciona --</option><option value="PR">Puerto Rico</option><option value="US">Estados Unidos / United States</option></select>
+        <div class="err-msg" id="fe-country"></div>
+      </div>
+      <div class="fbtn-row"><button class="fbtn-next" onclick="fnextStep(1)">Siguiente →</button></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="fstep" id="fstep-2">
+      <div class="fstep-title">Tu producto</div>
+      <div class="fstep-sub">Cuéntanos qué quieres fabricar y cómo.</div>
+      <div class="field">
+        <label>Modalidad de servicio <span class="req">*</span></label>
+        <div class="radio-grid">
+          <label class="radio-card" id="frc-wl" onclick="fselectModal('wl')"><input type="radio" name="fmodal" value="wl"><div class="radio-dot"></div><div class="radio-title">White Label</div><div class="radio-desc">Fórmula estándar lista. MOQ desde 50 unidades.</div></label>
+          <label class="radio-card" id="frc-pl" onclick="fselectModal('pl')"><input type="radio" name="fmodal" value="pl"><div class="radio-dot"></div><div class="radio-title">Private Label</div><div class="radio-desc">Fórmula exclusiva para tu marca. MOQ desde 250 unidades.</div></label>
+        </div>
+        <div class="err-msg" id="fe-modal"></div>
+      </div>
+      <div class="field" style="margin-top:1rem;">
+        <label>Productos de interés <span class="req">*</span></label>
+        <div class="check-grid" id="fproducts-grid"></div>
+        <div class="err-msg" id="fe-products"></div>
+      </div>
+      <div class="field"><label>Otro producto</label><input type="text" id="ff-other-prod" placeholder="Ej: Perfume, crema de manos..."></div>
+      <div class="fbtn-row">
+        <button class="fbtn-back" onclick="fprevStep(2)">← Atrás</button>
+        <button class="fbtn-next" onclick="fnextStep(2)">Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="fstep" id="fstep-3">
+      <div class="fstep-title">Detalles del proyecto</div>
+      <div class="fstep-sub">Mientras más detalles nos das, mejor podemos asesorarte.</div>
+      <div class="field">
+        <label>Cantidad estimada (unidades) <span class="req">*</span></label>
+        <select id="ff-qty"><option value="">-- Selecciona --</option><option value="50-100">50 – 100</option><option value="101-250">101 – 250</option><option value="251-500">251 – 500</option><option value="501-1000">501 – 1,000</option><option value="1000+">1,000+</option></select>
+        <div class="err-msg" id="fe-qty"></div>
+      </div>
+      <div class="field">
+        <label>Presupuesto aproximado <span class="req">*</span></label>
+        <div class="budget-pills">
+          <button type="button" class="budget-pill" onclick="fselectBudget(this,'Menos de $500')">Menos de $500</button>
+          <button type="button" class="budget-pill" onclick="fselectBudget(this,'$500 - $1,000')">$500 – $1,000</button>
+          <button type="button" class="budget-pill" onclick="fselectBudget(this,'$1,000 - $3,000')">$1,000 – $3,000</button>
+          <button type="button" class="budget-pill" onclick="fselectBudget(this,'$3,000 - $5,000')">$3,000 – $5,000</button>
+          <button type="button" class="budget-pill" onclick="fselectBudget(this,'$5,000+')">$5,000+</button>
+          <button type="button" class="budget-pill" onclick="fselectBudget(this,'No definido')">No definido</button>
+        </div>
+        <div class="err-msg" id="fe-budget"></div>
+      </div>
+      <div class="field"><label>Describe tu idea o marca <span class="req">*</span></label><textarea id="ff-idea" placeholder="Cuéntanos sobre tu visión, mercado objetivo, valores de tu marca, beneficios que buscas..."></textarea><div class="err-msg" id="fe-idea"></div></div>
+      <div class="private-block" id="fprivate-block">
+        <div class="private-note">🔬 <strong style="color:var(--gold-light);">Private Label:</strong> Si tienes ingredientes activos específicos en mente, indícalos aquí. Nuestro equipo evaluará la viabilidad.</div>
+        <div class="field" style="margin-bottom:0;"><label>Ingredientes activos deseados</label><textarea id="ff-activos" placeholder="Ej: Vitamina C 15%, Ácido Hialurónico, Retinol, Aceite de Argán..."></textarea></div>
+      </div>
+      <div class="fbtn-row">
+        <button class="fbtn-back" onclick="fprevStep(3)">← Atrás</button>
+        <button class="fbtn-next" onclick="fnextStep(3)">Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="fstep" id="fstep-4">
+      <div class="fstep-title">Confirma tu solicitud</div>
+      <div class="fstep-sub">Revisa tu información antes de enviar. Te contactamos en menos de 48 horas.</div>
+      <div class="summary-box" id="fsummary"></div>
+      <div class="form-note">Al enviar autorizas a IMD Factory a contactarte por email o WhatsApp. Tus datos no serán compartidos con terceros.</div>
+      <div class="fbtn-row">
+        <button class="fbtn-back" onclick="fprevStep(4)">← Atrás</button>
+        <button class="fbtn-submit" onclick="fsubmitForm()" id="fsubmit-btn">Enviar solicitud ✓</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="fstep" id="fstep-success">
+      <div class="success-box">
+        <div class="success-icon">✅</div>
+        <div class="success-title">¡Solicitud enviada!</div>
+        <div class="success-text">Gracias por tu interés en IMD Factory. Hemos recibido tu información y nos pondremos en contacto en las próximas 24–48 horas.</div>
+        <div class="success-contact">
+          <p>¿Preguntas urgentes? Contáctanos directo:</p>
+          <strong>📧 imdfactorypr@gmail.com</strong><br><br>
+          <strong>📞 +1 (787) 378-5544</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">IMD <span>Factory</span></div>
+  <div class="footer-info">
+    Jayuya, Puerto Rico &nbsp;·&nbsp; imdfactorypr@gmail.com &nbsp;·&nbsp; +1 (787) 378-5544<br>
+    © 2025 IMD Factory LLC · FDA Cosmetics Compliant · Manufactura local en PR
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/17873785544" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+
+const CAT_ORDER=['piel','cuerpo','labios','intimo','cabello'];
+const catNames={piel:'Piel',cuerpo:'Cuerpo',labios:'Labios',intimo:'Higiene Íntima',cabello:'Cabello'};
+const products=[
+  {cat:'piel',icon:'🧴',name:'Sérum facial',desc:'Vitamina C, ácido hialurónico, retinol o niacinamida. Activos de alta eficacia en base ligera.',moq:'50+'},
+  {cat:'piel',icon:'🌙',name:'Crema facial',desc:'Day cream y night cream. Texturas desde gel-crema a emulsión rica. SPF disponible.',moq:'50+'},
+  {cat:'piel',icon:'🫧',name:'Limpiador facial',desc:'Limpieza profunda sin resecar. Disponible en gel, espuma o crema. Libre de sulfatos agresivos.',moq:'50+'},
+  {cat:'piel',icon:'🌿',name:'Scrub facial',desc:'Exfoliación suave con micropartículas naturales. Elimina células muertas y aporta luminosidad.',moq:'50+'},
+  {cat:'piel',icon:'💦',name:'Tónico / mist facial',desc:'Hidratación instantánea y balance del pH. Base de agua termal, rosas o aloe vera.',moq:'50+'},
+  {cat:'piel',icon:'👁️',name:'Contorno de ojos',desc:'Activos anti-bolsas, anti-ojeras y tensor. En gel ligero o emulsión densa.',moq:'50+'},
+  {cat:'cuerpo',icon:'🧈',name:'Body butter',desc:'Mantequilla corporal ultra-nutritiva con karité, cacao o mango.',moq:'50+'},
+  {cat:'cuerpo',icon:'🥛',name:'Crema corporal / loción',desc:'Hidratación diaria en textura ligera o rica. Ingredientes emolientes para piel suave.',moq:'50+'},
+  {cat:'cuerpo',icon:'🌺',name:'Exfoliante corporal',desc:'Scrubs de azúcar, sal o café con aceites nutritivos y fragancias personalizadas.',moq:'50+'},
+  {cat:'cuerpo',icon:'🛁',name:'Aceite de baño & cuerpo',desc:'Aceite convencional de uso dual ducha/cuerpo. Alta fragancia con blend de aceites vegetales.',moq:'50+'},
+  {cat:'cuerpo',icon:'🧼',name:'Jabón líquido corporal',desc:'Gel de baño hidratante o jabón líquido. Base gentil sin sulfatos disponible.',moq:'50+'},
+  {cat:'cuerpo',icon:'✨',name:'Bronzeador & shimmer corporal',desc:'Loción o aceite con pigmentos bronceadores y partículas shimmer. Distintos niveles de intensidad.',moq:'50+'},
+  {cat:'cuerpo',icon:'🌅',name:'Autobronzeador',desc:'Loción autobronzeadora con DHA para bronceado natural y progresivo sin sol.',moq:'50+'},
+  {cat:'cuerpo',icon:'☀️',name:'Protector solar',desc:'SPF 30 y SPF 50. Loción o crema. Resistente al agua. Mineral u orgánico.',moq:'50+'},
+  {cat:'cuerpo',icon:'💫',name:'Brillo corporal / Body Shimmer Dry Oil',desc:'Aceite seco ultraligero con partículas shimmer. Absorción inmediata, piel luminosa.',moq:'50+'},
+  {cat:'cuerpo',icon:'💅',name:'Aceite de cutícula',desc:'Aceite nutritivo y reparador para cutículas. Con vitamina E, jojoba y aceites esenciales.',moq:'50+'},
+  {cat:'labios',icon:'💄',name:'Lip balm hidratante',desc:'Bálsamo labial nutritivo con mantequillas y aceites naturales. Protege, hidrata y suaviza.',moq:'50+'},
+  {cat:'labios',icon:'✨',name:'Lip gloss',desc:'Brillo labial de alta cobertura. Fórmula no pegajosa e hidratante. Transparente o en tonos.',moq:'50+'},
+  {cat:'labios',icon:'🌸',name:'Color Changing Lip Balm (Tint)',desc:'Reacciona al pH de los labios cambiando a un tono rosado o rojo natural. Hidratante.',moq:'50+'},
+  {cat:'labios',icon:'💋',name:'Color Changing Lip Gloss (Tint)',desc:'Brillo con efecto color-changing según el pH. Acabado único y personalizado.',moq:'50+'},
+  {cat:'labios',icon:'🫒',name:'Lip oil',desc:'Aceite labial hidratante y nutritivo. Efecto glossy natural. Con vitamina E o rosa mosqueta.',moq:'50+'},
+  {cat:'intimo',icon:'🌿',name:'Jabón íntimo en barra',desc:'Syndet bar para zona íntima. pH balanceado, libre de fragancias agresivas y sulfatos.',moq:'50+'},
+  {cat:'intimo',icon:'💧',name:'Jabón íntimo líquido',desc:'Gel de limpieza íntima con pH balanceado. Fórmula suave con ácido láctico y extractos naturales.',moq:'50+'},
+  {cat:'cabello',icon:'💆',name:'Shampoo',desc:'Libre de sulfatos y parabenos. Con queratina vegetal. Para cabello seco, graso, rizado o teñido.',moq:'50+'},
+  {cat:'cabello',icon:'✨',name:'Acondicionador',desc:'Fórmulas rinse-out y leave-in. Activos de hidratación, proteína de seda y mantequillas.',moq:'50+'},
+  {cat:'cabello',icon:'🌿',name:'Mascarilla capilar',desc:'Tratamiento intensivo semanal con aceite de argán, aguacate, coco o ricino.',moq:'50+'},
+  {cat:'cabello',icon:'💧',name:'Serum capilar',desc:'Alta concentración de activos. En ampolleta o pipeta para posicionamiento premium.',moq:'50+'},
+  {cat:'cabello',icon:'🌸',name:'Spray termoprotector',desc:'Protección térmica hasta 450°F. Fórmula liviana que no pesa el cabello.',moq:'50+'},
+  {cat:'cabello',icon:'🫒',name:'Aceite capilar',desc:'Blends de aceites vegetales: argán, jojoba, rosa mosqueta, ricino.',moq:'50+'},
+];
+let activeFilter='all';
+function renderProducts(){
+  const c=document.getElementById('products-container');
+  if(activeFilter==='all'){
+    let h='';
+    CAT_ORDER.forEach(cat=>{
+      const list=products.filter(p=>p.cat===cat);
+      if(!list.length)return;
+      h+=`<div class="cat-label">${catNames[cat]}</div><div class="products-grid">`;
+      h+=list.map(p=>`<div class="product-card"><span class="product-icon">${p.icon}</span><div class="product-cat">${catNames[p.cat]}</div><div class="product-name">${p.name}</div><div class="product-desc">${p.desc}</div><div class="product-moq">MOQ: <strong>${p.moq}</strong></div></div>`).join('');
+      h+=`</div>`;
+    });
+    c.innerHTML=h;
+  } else {
+    const list=products.filter(p=>p.cat===activeFilter);
+    c.innerHTML=`<div class="products-grid">${list.map(p=>`<div class="product-card"><span class="product-icon">${p.icon}</span><div class="product-cat">${catNames[p.cat]}</div><div class="product-name">${p.name}</div><div class="product-desc">${p.desc}</div><div class="product-moq">MOQ: <strong>${p.moq}</strong></div></div>`).join('')}</div>`;
+  }
+}
+function filterCat(cat,btn){activeFilter=cat;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderProducts();}
+renderProducts();
+
+/* FORM */
+let fselectedModal='',fselectedBudget='',fselectedProducts=[];
+const fproducts=['Sérum facial','Crema facial','Limpiador facial','Scrub facial','Tónico / mist','Contorno de ojos','Body butter','Crema corporal / loción','Exfoliante corporal','Jabón líquido corporal','Bronzeador','Autobronzeador','Protector solar','Body Shimmer Dry Oil','Aceite de cutícula','Lip balm hidratante','Lip gloss','Color Changing Lip Balm','Color Changing Lip Gloss','Lip oil','Jabón íntimo en barra','Jabón íntimo líquido','Shampoo','Acondicionador','Mascarilla capilar','Serum capilar','Spray termoprotector','Aceite capilar'];
+
+function renderProductGrid(){
+  const grid=document.getElementById('fproducts-grid');
+  grid.innerHTML=fproducts.map((p,i)=>`<label class="check-item${fselectedProducts.includes(i)?' checked':''}" onclick="ftoggleProduct(event,${i},this)"><input type="checkbox" ${fselectedProducts.includes(i)?'checked':''}><span>${p}</span></label>`).join('');
+}
+function ftoggleProduct(e,i,el){
+  e.preventDefault();
+  const idx=fselectedProducts.indexOf(i);
+  if(idx>-1){
+    fselectedProducts.splice(idx,1);
+    el.classList.remove('checked');
+    el.querySelector('input').checked=false;
+  } else {
+    fselectedProducts.push(i);
+    el.classList.add('checked');
+    el.querySelector('input').checked=true;
+  }
+}
+function fselectModal(v){fselectedModal=v;document.getElementById('frc-wl').classList.toggle('selected',v==='wl');document.getElementById('frc-pl').classList.toggle('selected',v==='pl');document.getElementById('fprivate-block').classList.toggle('show',v==='pl');}
+function fselectBudget(el,v){fselectedBudget=v;document.querySelectorAll('.budget-pill').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');}
+
+let fcurrentStep=1;
+function fnextStep(from){if(!fvalidateStep(from))return;fgoToStep(from+1);if(from+1===4)fbuildSummary();}
+function fprevStep(from){fgoToStep(from-1);}
+function fgoToStep(n){
+  document.getElementById('fstep-'+fcurrentStep).classList.remove('active');
+  fcurrentStep=n;
+  document.getElementById('fstep-'+n).classList.add('active');
+  fupdateStepBar();
+  document.getElementById('formulario').scrollIntoView({behavior:'smooth'});
+}
+function fupdateStepBar(){
+  for(let i=1;i<=4;i++){
+    const dot=document.getElementById('fdot-'+i);
+    dot.classList.remove('active','done');
+    if(i<fcurrentStep)dot.classList.add('done');
+    else if(i===fcurrentStep)dot.classList.add('active');
+    if(i<4)document.getElementById('fline-'+i).classList.toggle('done',i<fcurrentStep);
+  }
+}
+function fshowErr(fid,eid,msg){const f=document.getElementById(fid);if(f)f.classList.add('error');document.getElementById(eid).textContent=msg;}
+function fvalidateStep(n){
+  let ok=true;
+  if(n===1){
+    ['name','brand','email','phone','country'].forEach(f=>{const el=document.getElementById('ff-'+f);if(el)el.classList.remove('error');const e=document.getElementById('fe-'+f);if(e)e.textContent='';});
+    if(!document.getElementById('ff-name').value.trim()){fshowErr('ff-name','fe-name','Este campo es requerido.');ok=false;}
+    if(!document.getElementById('ff-brand').value.trim()){fshowErr('ff-brand','fe-brand','Este campo es requerido.');ok=false;}
+    const em=document.getElementById('ff-email').value.trim();
+    if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){fshowErr('ff-email','fe-email','Ingresa un email válido.');ok=false;}
+    if(!document.getElementById('ff-phone').value.trim()){fshowErr('ff-phone','fe-phone','Este campo es requerido.');ok=false;}
+    if(!document.getElementById('ff-country').value){fshowErr('ff-country','fe-country','Este campo es requerido.');ok=false;}
+  }
+  if(n===2){
+    document.getElementById('fe-modal').textContent='';document.getElementById('fe-products').textContent='';
+    if(!fselectedModal){document.getElementById('fe-modal').textContent='Selecciona una modalidad.';ok=false;}
+    if(!fselectedProducts.length){document.getElementById('fe-products').textContent='Selecciona al menos un producto.';ok=false;}
+  }
+  if(n===3){
+    document.getElementById('fe-qty').textContent='';document.getElementById('fe-budget').textContent='';document.getElementById('fe-idea').textContent='';
+    if(!document.getElementById('ff-qty').value){fshowErr('ff-qty','fe-qty','Este campo es requerido.');ok=false;}
+    if(!fselectedBudget){document.getElementById('fe-budget').textContent='Selecciona un rango de presupuesto.';ok=false;}
+    if(!document.getElementById('ff-idea').value.trim()){fshowErr('ff-idea','fe-idea','Este campo es requerido.');ok=false;}
+  }
+  return ok;
+}
+function fbuildSummary(){
+  const prods=fselectedProducts.map(i=>fproducts[i]).join(', ');
+  const other=document.getElementById('ff-other-prod').value.trim();
+  const activos=document.getElementById('ff-activos').value.trim();
+  const countryLabel=document.getElementById('ff-country').value==='PR'?'Puerto Rico':'Estados Unidos / United States';
+  document.getElementById('fsummary').innerHTML=`
+    <div style="margin-bottom:8px;"><strong>${document.getElementById('ff-name').value}</strong> · ${document.getElementById('ff-brand').value}</div>
+    <div style="margin-bottom:3px;">📧 ${document.getElementById('ff-email').value}</div>
+    <div style="margin-bottom:3px;">📞 ${document.getElementById('ff-phone').value}</div>
+    <div style="margin-bottom:12px;">📍 ${countryLabel}</div>
+    <div style="border-top:1px solid rgba(201,169,110,0.2);padding-top:10px;">
+      <div style="margin-bottom:3px;"><strong>Modalidad:</strong> ${fselectedModal==='wl'?'White Label':'Private Label'}</div>
+      <div style="margin-bottom:3px;"><strong>Productos:</strong> ${prods}${other?' + '+other:''}</div>
+      <div style="margin-bottom:3px;"><strong>Cantidad:</strong> ${document.getElementById('ff-qty').value}</div>
+      <div style="margin-bottom:3px;"><strong>Presupuesto:</strong> ${fselectedBudget}</div>
+      <div style="margin-bottom:3px;"><strong>Descripción:</strong> ${document.getElementById('ff-idea').value}</div>
+      ${activos?`<div><strong>Ingredientes activos:</strong> ${activos}</div>`:''}
+    </div>`;
+}
+function fsubmitForm(){
+  const btn=document.getElementById('fsubmit-btn');
+  btn.disabled=true;btn.textContent='Enviando...';
+  const prods=fselectedProducts.map(i=>fproducts[i]).join(', ');
+  const other=document.getElementById('ff-other-prod').value.trim();
+  const activos=document.getElementById('ff-activos').value.trim();
+  const countryLabel=document.getElementById('ff-country').value==='PR'?'Puerto Rico':'Estados Unidos / United States';
+  fetch('https://formspree.io/f/xwvzgorp',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      nombre:document.getElementById('ff-name').value,
+      marca:document.getElementById('ff-brand').value,
+      email:document.getElementById('ff-email').value,
+      telefono:document.getElementById('ff-phone').value,
+      pais:countryLabel,
+      modalidad:fselectedModal==='wl'?'White Label':'Private Label',
+      productos:prods+(other?' + '+other:''),
+      cantidad:document.getElementById('ff-qty').value,
+      presupuesto:fselectedBudget,
+      descripcion:document.getElementById('ff-idea').value,
+      ingredientes_activos:activos||'N/A',
+      _replyto:document.getElementById('ff-email').value,
+      _subject:'Nueva solicitud IMD Factory — '+document.getElementById('ff-brand').value
+    })
+  })
+  .then(res=>{
+    if(res.ok){
+      document.getElementById('fstep-4').classList.remove('active');
+      document.getElementById('fsteps-bar').style.display='none';
+      document.getElementById('fstep-success').classList.add('active');
+    } else {
+      btn.disabled=false;btn.textContent='Enviar solicitud ✓';
+      alert('Hubo un error al enviar. Por favor intenta de nuevo.');
+    }
+  })
+  .catch(()=>{
+    btn.disabled=false;btn.textContent='Enviar solicitud ✓';
+    alert('Hubo un error al enviar. Escríbenos directamente a imdfactorypr@gmail.com');
+  });
+}
+renderProductGrid();
+</script>
+</body>
+</html>
